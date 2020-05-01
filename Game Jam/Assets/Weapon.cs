@@ -12,10 +12,11 @@ public class Weapon : MonoBehaviour
 
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
+    public RaycastHit2D hitInfo;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
     }
 
     // Update is called once per frame
@@ -33,7 +34,8 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
+        //RaycastHit2D 
+        hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
 
         if(hitInfo.collider != null)
         {

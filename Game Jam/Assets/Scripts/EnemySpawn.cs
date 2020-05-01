@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class EnemySpawn : MonoBehaviour
 {
-    private GameObject enemy;
+    public GameObject enemy;
     [SerializeField]
     private float timer;
+    
 
     void Start()
     {
-        enemy = GameObject.Find("Enemy");
+                         //GameObject.Find("Enemy");
         timer = 2;
     }
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TargetScript : MonoBehaviour
 {
-    [SerializeField]
-    private int AmountOfWater;
+    
+    public int AmountOfWater;
     void Start()
     {
         

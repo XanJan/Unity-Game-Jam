@@ -1,35 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject enemy;
-    [SerializeField]
-    private float timer;
-    
-
+    // Start is called before the first frame update
     void Start()
     {
-                         //GameObject.Find("Enemy");
-        timer = 2;
+        
     }
 
-    
+    // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        Spawn();
-    }
-
-    void Spawn()
-    {
-        if (timer <= 0)
-        {
-            Instantiate(enemy, transform.position, transform.rotation);
-            timer = 2;
-        }
         
     }
 }

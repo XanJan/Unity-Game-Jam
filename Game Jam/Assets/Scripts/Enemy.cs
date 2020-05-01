@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,12 +17,22 @@ public class Enemy : MonoBehaviour
     private TargetScript targetScript;
     private bool waterPickup = true;
 
+    
+    public float Health;
+    [SerializeField]
+    private float amountOfDamage;
+
+    private Weapon playerScript;
+    
+
 
     void Start()
     {
+        Health = amountOfDamage;
         speed = 3f;
         target = GameObject.Find("Target");
         spawnPosition = GameObject.Find("Spawn Points Enemy/Spawn Point");
+        playerScript = GameObject.Find("Player").GetComponent<Weapon>();
 
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
     }
@@ -44,6 +55,16 @@ public class Enemy : MonoBehaviour
        {
            transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
        }
+
+        if (playerScript.hitInfo.collider.tag == "Enemy")//.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Du träffade en fiende");
+            //Health -= 1f;
+        }
+        //if(Health <= 0)
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
     void PickUpWater()

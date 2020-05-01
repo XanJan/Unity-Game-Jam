@@ -12,18 +12,19 @@ public class Weapon : MonoBehaviour
     public GameObject impactFX;
     public LineRenderer lr;
     public GameObject muzzleFlash;
-
+    public RaycastHit2D hitInfo;
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
+
     private float timeTillDestroy;
     
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        //hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         if (Time.time >= timeTillNext)
@@ -45,9 +46,11 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+
         timeTillDestroy = Time.time + 0.05f;
 
         RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
+
 
         var end = weaponTip.position + weaponTip.up.normalized * range;
         Debug.DrawLine(weaponTip.position, end, Color.red);

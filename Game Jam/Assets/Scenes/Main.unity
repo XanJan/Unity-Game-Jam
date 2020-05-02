@@ -1556,6 +1556,7 @@ MonoBehaviour:
   hydrationBar: {fileID: 2092287327}
   drinkAmount: 10
   maxHydration: 100
+  passiveDehydration: 0.01
 --- !u!1 &1187904741
 GameObject:
   m_ObjectHideFlags: 0

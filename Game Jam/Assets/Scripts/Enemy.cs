@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
+
     [SerializeField]
     GameObject target;
     private GameObject spawnPosition;
@@ -23,23 +23,27 @@ public class Enemy : MonoBehaviour
         speed = 3f;
         target = GameObject.Find("Target");
         spawnPosition = GameObject.Find("Spawn Points Enemy/Spawn Point");
+<<<<<<< HEAD
         weaponScript = GameObject.Find("Player").GetComponent<Weapon>();
+=======
+>>>>>>> 2cc72bdb6fc441922c6e789f434b42a1ab1ef711
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
     }
 
     void Update()
     {
-        
-       dirNormalized = (target.transform.position - transform.position).normalized;
-       if (Vector3.Distance(target.transform.position, transform.position) <= 1)
-       {
-            //enabled = false;  // causes that Update() of this MonoBehavior is not called anymore (until enabled is set back to true)
-         //speed = 0f;
-         //Debug.Log("Fienden är vid vattnet");                // Do whatever you want when the object is close to its target here
+        dirNormalized = (target.transform.position - transform.position).normalized;
+        transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
             PickUpWater();
             waterPickup = false;
-
             target = spawnPosition;
+<<<<<<< HEAD
        }
        else
        {
@@ -48,14 +52,16 @@ public class Enemy : MonoBehaviour
      
 
     }
-
-    void PickUpWater()
-    {
-        if(waterPickup == true)
-        {
-            targetScript.AmountOfWater -= 10;
+=======
         }
-        
+>>>>>>> 2cc72bdb6fc441922c6e789f434b42a1ab1ef711
+
+        void PickUpWater()
+        {
+            if (waterPickup == true)
+            {
+                targetScript.AmountOfWater -= 10;
+            }
+        }
     }
-    
 }

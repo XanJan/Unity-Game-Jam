@@ -39,7 +39,9 @@ public class Enemy : MonoBehaviour
         {
             PickUpWater();
             waterPickup = false;
-            target = spawnPosition;
+            target = FindClosestSpawn();
+            
+            
         }
     }
     void PickUpWater()
@@ -48,5 +50,27 @@ public class Enemy : MonoBehaviour
         {
             targetScript.AmountOfWater -= 10;
         }
+    }
+
+    public GameObject FindClosestSpawn()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Spawn Point");
+        GameObject closest = null;
+
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach(GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+
+        }
+        return closest;
     }
 }

@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+
+        Debug.Log(target);
+        Vector3 relative = transform.InverseTransformPoint(target.transform.position);
+        float angle = Mathf.Atan2(relative.y, relative.x ) * Mathf.Rad2Deg - 90;
+        transform.Rotate(0, 0, angle);
         dirNormalized = (target.transform.position - transform.position).normalized;
         transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
 

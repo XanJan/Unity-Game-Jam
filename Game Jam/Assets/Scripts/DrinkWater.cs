@@ -24,7 +24,6 @@ public class DrinkWater : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E) && canDrink != null)
         {
-            Debug.Log("drink");
             thirst += 10;
             waterScript.AmountOfWater -= 10;
         }

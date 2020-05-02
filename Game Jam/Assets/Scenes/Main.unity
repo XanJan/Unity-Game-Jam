@@ -280,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &356942039
 Transform:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688695990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.58, y: 5.18, z: 0}
+  m_LocalPosition: {x: 6.71, y: -0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 356942039}
@@ -1130,10 +1130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1155478163}
   thirst: 100
-  radius: 1
+  radius: 5
   whatIsDrinkable:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 16
 --- !u!1 &1187904741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,14 +1509,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1539759743}
-  - component: {fileID: 1539759744}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1539759743
 Transform:
   m_ObjectHideFlags: 0
@@ -1531,36 +1530,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1539759744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539759742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6fab6c133a6604ba431f4d08c821a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - name: 
-    barrelGuy: {fileID: 27660685398698960, guid: 48ab7d45b1698b045b9f60d31635e05f,
-      type: 3}
-    count: 4
-    rate: 1
-  - name: 
-    barrelGuy: {fileID: 27660685398698960, guid: 48ab7d45b1698b045b9f60d31635e05f,
-      type: 3}
-    count: 2
-    rate: 2
-  - name: 
-    barrelGuy: {fileID: 27660685398698960, guid: 48ab7d45b1698b045b9f60d31635e05f,
-      type: 3}
-    count: 5
-    rate: 2
-  timeBetweenWaves: 5
-  waveCountdown: 5
 --- !u!1 &1582973131
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,6 +57,7 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        Debug.Log(currentAmmo);
         currentAmmo--;
         timeTillDestroy = Time.time + 0.02f;
         RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range, ~LayerMask);

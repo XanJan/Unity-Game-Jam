@@ -9,7 +9,7 @@ public class DrinkWater : MonoBehaviour
     public float radius;
     public LayerMask whatIsDrinkable;
     
-    private Collider2D canDrink;
+    private bool canDrink;
     private TargetScript waterScript;
     
 
@@ -20,10 +20,11 @@ public class DrinkWater : MonoBehaviour
 
     void Update()
     {
-        canDrink = Physics2D.OverlapCircle(rb.position, radius, whatIsDrinkable);
+        canDrink = Physics.CheckSphere(new Vector3(rb.position.x, rb.position.y, 0), radius, whatIsDrinkable);
 
-        if(Input.GetKeyDown(KeyCode.E) && canDrink !=null)
+        if(Input.GetKeyDown(KeyCode.E) && canDrink)
         {
+            Debug.Log("drink");
             thirst += 10;
             waterScript.AmountOfWater -= 10;
         }

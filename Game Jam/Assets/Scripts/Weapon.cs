@@ -14,18 +14,28 @@ public class Weapon : MonoBehaviour
     public GameObject muzzleFlash;
     public RaycastHit2D hitInfo;
     public LayerMask LayerMask;
+    public int maxAmmo;
+    public float reloadSpeed;
 
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
     private float timeTillDestroy;
-   
+    private int currentAmmo;
+    private bool isReloading = false;
+
+
+    private void Start()
+    {
+        currentAmmo = maxAmmo;
+    }
     void Update()
     {
         if (Time.time >= timeTillNext)
             readyToShoot = true;
         else
             readyToShoot = false;
-        if (Input.GetButton("Fire1") && readyToShoot)
+
+        if (Input.GetButton("Fire1") && readyToShoot && currentAmmo > 0)
         {
             Shoot();
         }
@@ -35,11 +45,21 @@ public class Weapon : MonoBehaviour
             lr.SetPosition(1, Vector3.zero);
             muzzleFlash.SetActive(false);
         }
+        if (isReloading)
+            return;
+        if (currentAmmo <= 0)
+        {
+            isReloading = true;
+            StartCoroutine(Reload());
+            return;
+        }
     }
 
     void Shoot()
     {
-        timeTillDestroy = Time.time + 0.05f;
+        Debug.Log(currentAmmo);
+        currentAmmo --;
+        timeTillDestroy = Time.time + 0.02f;
         RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range, ~LayerMask);
         var end = weaponTip.position + weaponTip.up.normalized * range;
 
@@ -58,5 +78,12 @@ public class Weapon : MonoBehaviour
         }
         timeTillNext = Time.time + 1f / fireRate;
         muzzleFlash.SetActive(true);
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(reloadSpeed);
+        currentAmmo = maxAmmo;
+        isReloading = false;
     }
 }

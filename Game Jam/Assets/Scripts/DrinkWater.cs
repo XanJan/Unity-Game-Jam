@@ -40,8 +40,9 @@ public class DrinkWater : MonoBehaviour
         {
             if (maxHydration - thirst < drinkAmount)
             {
-                thirst += maxHydration - thirst;
-                waterScript.AmountOfWater -= maxHydration - thirst;
+                var subtract = maxHydration - thirst;
+                thirst += subtract;
+                waterScript.AmountOfWater -= subtract;
             }
             else
             {

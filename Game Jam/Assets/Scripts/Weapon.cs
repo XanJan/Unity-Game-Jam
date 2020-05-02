@@ -13,9 +13,10 @@ public class Weapon : MonoBehaviour
     public LineRenderer lr;
     public GameObject muzzleFlash;
     public RaycastHit2D hitInfo;
+    public LayerMask LayerMask;
+
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
-
     private float timeTillDestroy;
     
 
@@ -49,7 +50,7 @@ public class Weapon : MonoBehaviour
 
         timeTillDestroy = Time.time + 0.05f;
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
+        RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range, ~LayerMask);
 
 
         var end = weaponTip.position + weaponTip.up.normalized * range;

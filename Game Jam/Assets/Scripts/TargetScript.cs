@@ -7,15 +7,13 @@ public class TargetScript : MonoBehaviour
 {
     public GameObject[] waterSprite;
     public int AmountOfWater;
-    void Start()
-    {
-        
-    }
+    [HideInInspector]
+    public GameObject waterSpriteActive;
 
-    
+
     void Update()
     {
-        if(AmountOfWater > 0 && AmountOfWater <= 20)
+        if (AmountOfWater > 0 && AmountOfWater <= 20)
         {
             waterSprite[0].SetActive(true);
         }
@@ -51,5 +49,12 @@ public class TargetScript : MonoBehaviour
         }
         else
             waterSprite[5].SetActive(false);
+
+        for (int i = 0; i < waterSprite.Length; i++)
+        {
+            if (waterSprite[i].activeSelf)
+                waterSpriteActive = waterSprite[i];
+
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TargetScript : MonoBehaviour
 {
     public GameObject[] waterSprite;
-    public int AmountOfWater;
+    public float AmountOfWater;
     [HideInInspector]
     public GameObject waterSpriteActive;
 

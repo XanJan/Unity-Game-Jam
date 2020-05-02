@@ -10,18 +10,22 @@ public class DrinkWater : MonoBehaviour
     public float radius;
     public LayerMask whatIsDrinkable;
     public Image hydrationBar;
-    public int drinkAmount;
+    public float drinkAmount;
     public float maxHydration;
     public float passiveDehydration;
+    public float activeDehydration;
 
     private Collider2D canDrink;
     private TargetScript waterScript;
+    private Movement movementScript;
     
 
     void Start()
     {
         waterScript = GameObject.Find("Target").GetComponent<TargetScript>();
+        movementScript = GameObject.Find("Player").GetComponent<Movement>();
         InvokeRepeating("PassiveHydration", 0f, 0.01f);
+        InvokeRepeating("ActiveHydration", 0f, 0.01f);
     }
     void Update()
     {
@@ -32,10 +36,18 @@ public class DrinkWater : MonoBehaviour
             Lose();
         }
 
-        if(Input.GetKeyDown(KeyCode.E) && canDrink != null)
+        if(Input.GetKeyDown(KeyCode.E) && canDrink != null && thirst < maxHydration)
         {
-            thirst += drinkAmount;
-            waterScript.AmountOfWater -= drinkAmount;
+            if (maxHydration - thirst < drinkAmount)
+            {
+                thirst += maxHydration - thirst;
+                waterScript.AmountOfWater -= maxHydration - thirst;
+            }
+            else
+            {
+                thirst += drinkAmount;
+                waterScript.AmountOfWater -= drinkAmount;
+            }
         }
         hydrationBar.fillAmount = thirst / maxHydration;
     }
@@ -43,6 +55,14 @@ public class DrinkWater : MonoBehaviour
     public void PassiveHydration()
     {
         thirst -= passiveDehydration;
+    }
+
+    public void ActiveHydration()
+    {
+        if (movementScript.movement.magnitude > 0f)
+        {
+            thirst -= activeDehydration;
+        }
     }
 
     public void Lose()

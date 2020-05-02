@@ -8,21 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 5679057049371426141}
   - component: {fileID: 6638690960001390797}
   - component: {fileID: 1354348683640776634}
   m_Layer: 0
   m_Name: BGHP
-=======
-  - component: {fileID: 27660685398698960}
-  - component: {fileID: 27660685398698963}
-  - component: {fileID: 27660685398698962}
-  - component: {fileID: 6561418783840999521}
-  - component: {fileID: 8825081986290328739}
-  m_Layer: 8
-  m_Name: Enemy
->>>>>>> 2cc72bdb6fc441922c6e789f434b42a1ab1ef711
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,19 +361,12 @@ CircleCollider2D:
   m_Offset: {x: 0.008439064, y: 0}
   serializedVersion: 2
   m_Radius: 0.44967413
-<<<<<<< HEAD
 --- !u!114 &1511301066464987767
 MonoBehaviour:
-=======
---- !u!50 &8825081986290328739
-Rigidbody2D:
-  serializedVersion: 4
->>>>>>> 2cc72bdb6fc441922c6e789f434b42a1ab1ef711
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 6746855487578449189}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -392,19 +375,3 @@ Rigidbody2D:
   m_EditorClassIdentifier: 
   health: 3
   healthBar: {fileID: 7914272257644635593}
-=======
-  m_GameObject: {fileID: 27660685398698965}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
->>>>>>> 2cc72bdb6fc441922c6e789f434b42a1ab1ef711

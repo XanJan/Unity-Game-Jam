@@ -18,6 +18,13 @@ public class Weapon : MonoBehaviour
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
     private float timeTillDestroy;
+    
+
+    void Start()
+    {
+        //hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
+    }
+
    
     void Update()
     {
@@ -29,6 +36,7 @@ public class Weapon : MonoBehaviour
         {
             Shoot();
         }
+
         if (Time.time >= timeTillDestroy)
         {
             lr.SetPosition(0, Vector3.zero);
@@ -39,12 +47,18 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+
         timeTillDestroy = Time.time + 0.05f;
+
         RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range, ~LayerMask);
+
+
         var end = weaponTip.position + weaponTip.up.normalized * range;
+        Debug.DrawLine(weaponTip.position, end, Color.red);
 
         if(hitInfo.collider != null)
         {
+            Debug.Log(hitInfo.collider.tag);
             GameObject impactOB = Instantiate(impactFX, new Vector3(hitInfo.point.x, hitInfo.point.y, 0), Quaternion.LookRotation(hitInfo.normal));
             impactOB.GetComponent<ParticleSystem>().Play();
             Destroy(impactOB, 2f);
@@ -62,6 +76,8 @@ public class Weapon : MonoBehaviour
             lr.SetPosition(0, weaponTip.position);
             lr.SetPosition(1, end);
         }
+
+
         timeTillNext = Time.time + 1f / fireRate;
         muzzleFlash.SetActive(true);
     }

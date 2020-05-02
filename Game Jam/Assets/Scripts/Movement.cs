@@ -11,11 +11,6 @@ public class Movement : MonoBehaviour
 
     Vector2 movement;
     Vector2 mousePos;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         PlayerInput();

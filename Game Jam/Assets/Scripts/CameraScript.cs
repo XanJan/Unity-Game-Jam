@@ -12,7 +12,6 @@ public class CameraScript : MonoBehaviour
 
     private Transform myTransform;
 
-    // Start is called before the first frame update
     void Start()
     {
         myTransform = transform;
@@ -24,7 +23,6 @@ public class CameraScript : MonoBehaviour
                                             Mathf.Clamp(myTransform.position.y, clampY.x, clampY.y),
                                             myTransform.position.z);
     }
-    // Update is called once per frame
     private void FixedUpdate()
     {
         if(followTarget != null)

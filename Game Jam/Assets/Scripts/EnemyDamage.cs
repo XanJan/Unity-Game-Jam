@@ -14,7 +14,7 @@ public class EnemyDamage : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        //healthBar.fillAmount = health / 3;
+        healthBar.fillAmount = health / 3;
         if (health <= 0f)
         {
             Die();

@@ -2996,7 +2996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582973131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -3.9, z: -10}
+  m_LocalPosition: {x: 50.1, y: -15.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3049,7 +3049,7 @@ MonoBehaviour:
   targetOffset: {x: 0, y: 0, z: -10}
   cameraSpeed: 2
   clampX: {x: -50, y: 50}
-  clampY: {x: -28, y: 28}
+  clampY: {x: -28, y: 27}
 --- !u!1 &1650579576
 GameObject:
   m_ObjectHideFlags: 0

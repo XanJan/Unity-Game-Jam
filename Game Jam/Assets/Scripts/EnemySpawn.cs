@@ -11,8 +11,7 @@ public class EnemySpawn : MonoBehaviour
     
 
     void Start()
-    {
-                         //GameObject.Find("Enemy");
+    {          
         timer = 2;
     }
 

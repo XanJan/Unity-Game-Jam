@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public float health = 30f;
+    public float health = 3f;
 
     [Header("Unity Stuff")]
     public Image healthBar;

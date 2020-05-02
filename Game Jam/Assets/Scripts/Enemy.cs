@@ -20,9 +20,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         speed = 3f;
-        target = GameObject.Find("Target");
-        spawnPosition = GameObject.Find("Spawn Points Enemy/Spawn Point");
+        target = GameObject.FindGameObjectWithTag("Water");
+        spawnPosition = GameObject.Find("Spawn Point");
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
+
+
     }
 
     void Update()

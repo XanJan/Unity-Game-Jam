@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e245383445732d489b69aac258f776f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 6746855487578449189, guid: 48ab7d45b1698b045b9f60d31635e05f, type: 3}
+  enemy: {fileID: 27660685398698965, guid: 48ab7d45b1698b045b9f60d31635e05f, type: 3}
   timer: 0
 --- !u!1 &471236405
 GameObject:
@@ -522,7 +522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688695990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.75, y: -0.39, z: 0}
+  m_LocalPosition: {x: 6.71, y: -0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 356942039}
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 1650579577}
-  damage: 1
+  damage: 10
   range: 10
   fireRate: 2
   impactFX: {fileID: 1124504764582059402, guid: daff7d46f4a0c8545b00b41e35b4e938,

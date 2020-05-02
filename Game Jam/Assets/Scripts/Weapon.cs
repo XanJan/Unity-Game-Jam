@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public Transform weaponTip;
-    public float damage = 1f;
+    public float damage;
     public float range;
     public float fireRate;
     public GameObject impactFX;
@@ -64,12 +64,6 @@ public class Weapon : MonoBehaviour
             Destroy(impactOB, 2f);
             lr.SetPosition(0, weaponTip.position);
             lr.SetPosition(1, hitInfo.point);
-
-            EnemyDamage enemy = hitInfo.transform.GetComponent<EnemyDamage>();
-            if(enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
         }
         else
         {

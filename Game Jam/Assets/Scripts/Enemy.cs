@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
     Vector3 dirNormalized;
     private TargetScript targetScript;
     private bool waterPickup = true;
-    private Weapon weaponScript;
 
 
     void Start()
@@ -23,7 +22,7 @@ public class Enemy : MonoBehaviour
         speed = 3f;
         target = GameObject.Find("Target");
         spawnPosition = GameObject.Find("Spawn Points Enemy/Spawn Point");
-        weaponScript = GameObject.Find("Player").GetComponent<Weapon>();
+
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
     }
 
@@ -45,8 +44,6 @@ public class Enemy : MonoBehaviour
        {
            transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
        }
-     
-
     }
 
     void PickUpWater()

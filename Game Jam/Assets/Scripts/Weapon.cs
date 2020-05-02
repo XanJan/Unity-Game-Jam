@@ -1,10 +1,10 @@
-﻿using JetBrains.Annotations;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+<<<<<<< HEAD
     public Transform weaponTip;
     public float damage = 1f;
     public float range;
@@ -65,10 +65,18 @@ public class Weapon : MonoBehaviour
             StartCoroutine(Reload());
             return;
         }
+=======
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+>>>>>>> ce05cfff0d1e03cddc55906edddaec02c3a05862
     }
 
-    void Shoot()
+    // Update is called once per frame
+    void Update()
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         Debug.Log(currentAmmo);
         currentAmmo --;
@@ -117,3 +125,8 @@ public class Weapon : MonoBehaviour
         isReloading = false;
     }
 }
+=======
+        
+    }
+}
+>>>>>>> ce05cfff0d1e03cddc55906edddaec02c3a05862

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public Transform weaponTip;
-    public float damage;
+    public float damage = 1f;
     public float range;
     public float fireRate;
     public GameObject impactFX;
@@ -18,14 +18,14 @@ public class Weapon : MonoBehaviour
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
     private float timeTillDestroy;
-    
+
 
     void Start()
     {
         //hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range);
     }
 
-   
+
     void Update()
     {
         if (Time.time >= timeTillNext)
@@ -56,7 +56,7 @@ public class Weapon : MonoBehaviour
         var end = weaponTip.position + weaponTip.up.normalized * range;
         Debug.DrawLine(weaponTip.position, end, Color.red);
 
-        if(hitInfo.collider != null)
+        if (hitInfo.collider != null)
         {
             Debug.Log(hitInfo.collider.tag);
             GameObject impactOB = Instantiate(impactFX, new Vector3(hitInfo.point.x, hitInfo.point.y, 0), Quaternion.LookRotation(hitInfo.normal));
@@ -64,6 +64,12 @@ public class Weapon : MonoBehaviour
             Destroy(impactOB, 2f);
             lr.SetPosition(0, weaponTip.position);
             lr.SetPosition(1, hitInfo.point);
+
+            EnemyDamage enemy = hitInfo.transform.GetComponent<EnemyDamage>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
         }
         else
         {

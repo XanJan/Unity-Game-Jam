@@ -68,7 +68,7 @@ public class WaveSpawner : MonoBehaviour
         if(nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            Debug.Log("All waves complete, looping...");
+            //Debug.Log("All waves complete, looping...");
         }
         else
         {
@@ -91,7 +91,7 @@ public class WaveSpawner : MonoBehaviour
     }
     IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning Wave: " + _wave.name);
+        //Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
 
         for (int i = 0; i < _wave.count; i++)
@@ -109,7 +109,7 @@ public class WaveSpawner : MonoBehaviour
     {
        
 
-        Debug.Log("Spawning Enemy: " + _barrelGuy.name);
+        //Debug.Log("Spawning Enemy: " + _barrelGuy.name);
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length) ];
         Instantiate(_barrelGuy, _sp.position, _sp.rotation);
         

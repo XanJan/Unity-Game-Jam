@@ -15,23 +15,29 @@ public class Enemy : MonoBehaviour
     Vector3 dirNormalized;
     private TargetScript targetScript;
     private bool waterPickup = true;
-    
+
+    public Sprite waterSprite;
+   
+    public float EnemyTimer;
+    private bool colWithWater = false;
+
 
 
     void Start()
     {
         speed = 3f;
+       
         target = GameObject.FindGameObjectWithTag("Water");
         spawnPosition = GameObject.Find("Spawn Point");
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
-
+        
 
     }
 
     void Update()
     {
 
-        Debug.Log(target);
+        //Debug.Log(target);
         Vector3 relative = transform.InverseTransformPoint(target.transform.position);
         float angle = Mathf.Atan2(relative.y, relative.x ) * Mathf.Rad2Deg - 90;
         transform.Rotate(0, 0, angle);
@@ -43,17 +49,32 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(colWithWater == true)
+        {
+            EnemyTimer -= 0.004f;
+        }
+        if (EnemyTimer <= 0)
+        {
+            Debug.Log("test");
+            PickUpWater();
+            waterPickup = false;
+
+            target = FindClosestSpawn();
+            GetComponent<SpriteRenderer>().sprite = waterSprite;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Water"))
         {
-            PickUpWater();
-            waterPickup = false;
-            target = FindClosestSpawn();
+            colWithWater = true;
             
             
+           
+
+
         }
     }
     void PickUpWater()

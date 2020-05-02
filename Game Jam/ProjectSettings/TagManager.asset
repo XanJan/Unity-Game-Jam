@@ -7,6 +7,7 @@ TagManager:
   - Water
   - Enemy
   - GM
+  - Spawn Point
   layers:
   - Default
   - TransparentFX

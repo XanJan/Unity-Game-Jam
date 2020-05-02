@@ -17,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
     public Wave[] waves;
     private int nextWave = 0;
 
-    //public Transform[] spawnPoints; 
+    public Transform[] spawnPoints; 
 
     public float timeBetweenWaves = 5f;
     public float waveCountdown;
@@ -28,6 +28,10 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         waveCountdown = timeBetweenWaves;
+        if (spawnPoints.Length == 0)
+        {
+            Debug.LogError("No spawn points referenceds");
+        }
     }
 
     void Update()
@@ -103,9 +107,11 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy (Transform _barrelGuy)
     {
+       
+
         Debug.Log("Spawning Enemy: " + _barrelGuy.name);
-        //Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Lenght) ];
-        Instantiate(_barrelGuy, transform.position, transform.rotation);
+        Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length) ];
+        Instantiate(_barrelGuy, _sp.position, _sp.rotation);
         
     }
 }

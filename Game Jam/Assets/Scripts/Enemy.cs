@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //dirNormalized = (target.transform.position - transform.position).normalized;
+        dirNormalized = (target.transform.position - transform.position).normalized;
         transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
     }
 

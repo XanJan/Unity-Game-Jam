@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     Vector3 dirNormalized;
     private TargetScript targetScript;
     private bool waterPickup = true;
+    
 
 
     void Start()
@@ -31,6 +32,12 @@ public class Enemy : MonoBehaviour
     {
         dirNormalized = (target.transform.position - transform.position).normalized;
         transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
+
+       float enemyDistance = Vector3.Distance(this.transform.position, target.transform.position);
+        if(enemyDistance <= 1 && !waterPickup)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

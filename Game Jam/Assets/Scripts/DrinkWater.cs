@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrinkWater : MonoBehaviour
 {   
@@ -8,7 +9,10 @@ public class DrinkWater : MonoBehaviour
     public float thirst;
     public float radius;
     public LayerMask whatIsDrinkable;
-    
+    public Image hydrationBar;
+    public int drinkAmount;
+    public float maxHydration;
+
     private Collider2D canDrink;
     private TargetScript waterScript;
     
@@ -24,8 +28,9 @@ public class DrinkWater : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E) && canDrink != null)
         {
-            thirst += 10;
-            waterScript.AmountOfWater -= 10;
+            thirst += drinkAmount;
+            waterScript.AmountOfWater -= drinkAmount;
         }
+        hydrationBar.fillAmount = thirst / maxHydration;
     }
 }

@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     public float movementSpeed;
     public Camera cam;
 
-    Vector2 movement;
+    public Vector2 movement;
     Vector2 mousePos;
     void Start()
     {
@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
         rb.rotation = angle;
     }
 
-    void PlayerInput()
+    public void PlayerInput()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

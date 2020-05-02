@@ -1397,6 +1397,7 @@ MonoBehaviour:
   rb: {fileID: 1155478163}
   movementSpeed: 6
   cam: {fileID: 1582973133}
+  movement: {x: 0, y: 0}
 --- !u!114 &1155478165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,7 +1413,7 @@ MonoBehaviour:
   weaponTip: {fileID: 1650579577}
   damage: 1
   range: 10
-  fireRate: 2
+  fireRate: 4
   impactFX: {fileID: 1124504764582059402, guid: daff7d46f4a0c8545b00b41e35b4e938,
     type: 3}
   lr: {fileID: 1155478167}
@@ -1420,7 +1421,7 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 4
-  maxAmmo: 6
+  maxAmmo: 12
   reloadSpeed: 2
 --- !u!70 &1155478166
 CapsuleCollider2D:
@@ -1557,6 +1558,7 @@ MonoBehaviour:
   drinkAmount: 10
   maxHydration: 100
   passiveDehydration: 0.01
+  activeDehydration: 0.05
 --- !u!1 &1187904741
 GameObject:
   m_ObjectHideFlags: 0

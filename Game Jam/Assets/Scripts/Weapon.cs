@@ -65,6 +65,11 @@ public class Weapon : MonoBehaviour
 
         if (hitInfo.collider != null)
         {
+            EnemyDamage enemy = hitInfo.transform.GetComponent<EnemyDamage>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
             GameObject impactOB = Instantiate(impactFX, new Vector3(hitInfo.point.x, hitInfo.point.y, 0), Quaternion.LookRotation(hitInfo.normal));
             impactOB.GetComponent<ParticleSystem>().Play();
             Destroy(impactOB, 2f);
@@ -76,6 +81,7 @@ public class Weapon : MonoBehaviour
             lr.SetPosition(0, weaponTip.position);
             lr.SetPosition(1, end);
         }
+
         timeTillNext = Time.time + 1f / fireRate;
         muzzleFlash.SetActive(true);
     }

@@ -36,6 +36,8 @@ public class WaveSpawner : MonoBehaviour
     public float score = 0;
     public Transform barrelGuy1;
 
+    public Animator animator;
+
     public Wave wave1;
     public Wave wave2;
 
@@ -115,7 +117,8 @@ public class WaveSpawner : MonoBehaviour
 
         //waves.RemoveAt(RemoveClass);
 
-     
+        var gO = Instantiate(animator);
+        Destroy(gO, 5f);
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;

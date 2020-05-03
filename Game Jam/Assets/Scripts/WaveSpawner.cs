@@ -15,7 +15,7 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
     }
 
-    public Wave[] waves;
+    public List<Wave> waves;
     private int nextWave = 0;
 
     public Transform[] spawnPoints; 
@@ -34,8 +34,28 @@ public class WaveSpawner : MonoBehaviour
     public Transform startPosition;
     public TextMeshProUGUI scoreVisual;
     public float score = 0;
+    public Transform barrelGuy1;
+
+    public Wave wave1;
+    public Wave wave2;
+
+    private int AddingCount;
+    private float AddingRate;
+    private int Round;
     void Start()
     {
+        AddingCount = 2;
+        AddingRate = 2f;
+        Round = 1;
+
+        wave1 = new Wave();
+        wave1.name = Round.ToString();
+        wave1.barrelGuy = barrelGuy1;//.transform.position;
+        wave1.count = AddingCount;
+        wave1.rate = AddingRate;
+        waves.Add(wave1);
+
+
         waterScript = GameObject.Find("Target").GetComponent<TargetScript>();
         waveCountdown = timeBetweenWaves;
 
@@ -75,6 +95,28 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
+        Debug.Log(waves);
+        AddingCount++;
+        AddingRate += 0.25f;
+        Round++;
+
+        wave2 = new Wave();
+        wave2.name = Round.ToString();
+        wave2.barrelGuy = barrelGuy1;
+        wave2.count = AddingCount;
+        wave2.rate = AddingRate;
+
+        waves.Add(wave2);
+
+        //int RemoveClass = waves.Count;
+
+        //waves.RemoveAt(RemoveClass);
+      
+        //foreach(Wave w in waves)
+        //{
+
+        //}
+
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
@@ -84,16 +126,16 @@ public class WaveSpawner : MonoBehaviour
         waterScript.AmountOfWater += addWaterAmount;
         rb.position = startPosition.position;
 
-        if(nextWave + 1 > waves.Length - 1)
-        {
-            nextWave = 0;
-            //Debug.Log("All waves complete, looping...");
-        }
-        else
-        {
-            nextWave++;
-        }
-
+        //if(nextWave + 1 > waves.Length - 1)
+        //{
+        //    nextWave = 0;
+        //    //Debug.Log("All waves complete, looping...");
+        //}
+        //else
+        //{
+        //    nextWave++;
+        //}
+        nextWave++;
         
     }
     bool EnemyIsalive() // check if there is any enemys alive

@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             gameHasEnded = true;
             endScene.SetActive(true);
-            Debug.Log("losyt");
         }
     }
 }

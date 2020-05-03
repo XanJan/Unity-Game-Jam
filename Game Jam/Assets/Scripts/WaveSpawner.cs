@@ -42,6 +42,9 @@ public class WaveSpawner : MonoBehaviour
     private int AddingCount;
     private float AddingRate;
     private int Round;
+    private int test;
+
+
     void Start()
     {
         AddingCount = 2;
@@ -50,7 +53,7 @@ public class WaveSpawner : MonoBehaviour
 
         wave1 = new Wave();
         wave1.name = Round.ToString();
-        wave1.barrelGuy = barrelGuy1;//.transform.position;
+        wave1.barrelGuy = barrelGuy1;
         wave1.count = AddingCount;
         wave1.rate = AddingRate;
         waves.Add(wave1);
@@ -95,7 +98,7 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
-        Debug.Log(waves);
+        
         AddingCount++;
         AddingRate += 0.25f;
         Round++;
@@ -111,11 +114,8 @@ public class WaveSpawner : MonoBehaviour
         //int RemoveClass = waves.Count;
 
         //waves.RemoveAt(RemoveClass);
-      
-        //foreach(Wave w in waves)
-        //{
 
-        //}
+     
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;

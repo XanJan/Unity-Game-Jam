@@ -9,6 +9,7 @@ public class EnemyDamage : MonoBehaviour
     public float health = 3f;
     public GameObject barrel;
     private Enemy enemyScript;
+    public AudioSource hitEffect;
 
     [Header("Unity Stuff")]
     public Image healthBar;
@@ -20,6 +21,7 @@ public class EnemyDamage : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        hitEffect.Play();
         health -= amount;
         healthBar.fillAmount = health / 3;
         if (health <= 0f)

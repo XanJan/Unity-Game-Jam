@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject cursor;
     public GameObject pauseMenu;
     public bool GameIsPaused = false;
+    public AudioMixer audioMixer;
 
     private void Update()
     {
@@ -65,5 +67,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+
+    public void setVolume(float volume)
+    {
+        audioMixer.SetFloat("Volume_test", volume);
+        //Debug.Log(volume);
     }
 }

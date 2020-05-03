@@ -26,6 +26,8 @@ public class Weapon : MonoBehaviour
     private int currentAmmo;
     private bool isReloading = false;
 
+    public AudioSource audioSource;
+
 
     private void Start()
     {
@@ -63,6 +65,7 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        audioSource.Play();
         currentAmmo--;
         timeTillDestroy = Time.time + 0.02f;
         RaycastHit2D hitInfo = Physics2D.Raycast(weaponTip.position, weaponTip.up, range, ~LayerMask);

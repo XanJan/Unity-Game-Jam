@@ -25,8 +25,15 @@ public class WaveSpawner : MonoBehaviour
     private float searchCountdown = 1f;
 
     private SpawnState state = SpawnState.COUNTING;
+
+    private TargetScript waterScript;
+    public float addWaterAmount;
+
+    public Rigidbody2D rb;
+    public Transform startPosition;
     void Start()
     {
+        waterScript = GameObject.Find("Target").GetComponent<TargetScript>();
         waveCountdown = timeBetweenWaves;
         if (spawnPoints.Length == 0)
         {
@@ -65,6 +72,9 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
+        waterScript.AmountOfWater += addWaterAmount;
+        rb.position = startPosition.position;
+
         if(nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
@@ -74,6 +84,7 @@ public class WaveSpawner : MonoBehaviour
         {
             nextWave++;
         }
+
         
     }
     bool EnemyIsalive() // check if there is any enemys alive

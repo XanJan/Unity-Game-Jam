@@ -14,13 +14,14 @@ public class Enemy : MonoBehaviour
 
     Vector3 dirNormalized;
     private TargetScript targetScript;
-    private bool waterPickup = true;
+    public bool waterPickup = true;
 
     public Sprite waterSprite;
    
     public float EnemyTimer;
     private bool colWithWater = false;
 
+    
 
 
     void Start()
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
        float enemyDistance = Vector3.Distance(this.transform.position, target.transform.position);
         if(enemyDistance <= 1 && !waterPickup)
         {
-            //Instantiate();
+            
             Destroy(gameObject);
         }
 

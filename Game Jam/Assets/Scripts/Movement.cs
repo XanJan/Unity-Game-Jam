@@ -11,9 +11,10 @@ public class Movement : MonoBehaviour
 
     public Vector2 movement;
     Vector2 mousePos;
+    private TargetScript targetScript;
     void Start()
     {
-        
+        targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
     }
 
     void Update()
@@ -34,5 +35,13 @@ public class Movement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Barrel"))
+        {
+            Destroy(collision.gameObject);
+            targetScript.AmountOfWater += 10;
+        }
     }
 }

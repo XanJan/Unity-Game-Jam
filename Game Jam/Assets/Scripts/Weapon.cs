@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
     public int maxAmmo;
     public float reloadSpeed;
     public TextMeshProUGUI ammoVisual;
+    private GameManager gM;
 
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
@@ -29,6 +30,8 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         currentAmmo = maxAmmo;
+        gM = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
     void Update()
     {
@@ -38,7 +41,7 @@ public class Weapon : MonoBehaviour
         else
             readyToShoot = false;
 
-        if (Input.GetButton("Fire1") && readyToShoot && currentAmmo > 0 && isReloading == false)
+        if (Input.GetButton("Fire1") && readyToShoot && currentAmmo > 0 && isReloading == false && gM.GameIsPaused == false)
         {
             Shoot();
         }

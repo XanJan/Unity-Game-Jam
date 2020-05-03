@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Weapon : MonoBehaviour
     public LayerMask LayerMask;
     public int maxAmmo;
     public float reloadSpeed;
+    public TextMeshProUGUI ammoVisual;
 
     private float timeTillNext = 0f;
     private bool readyToShoot = true;
@@ -30,6 +32,7 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
+        ammoVisual.text = currentAmmo + "/" + maxAmmo;
         if (Time.time >= timeTillNext)
             readyToShoot = true;
         else

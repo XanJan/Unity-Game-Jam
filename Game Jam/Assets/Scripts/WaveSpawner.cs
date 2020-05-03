@@ -33,7 +33,7 @@ public class WaveSpawner : MonoBehaviour
     public Rigidbody2D rb;
     public Transform startPosition;
     public TextMeshProUGUI scoreVisual;
-    private float score = 0;
+    public float score = 0;
     void Start()
     {
         waterScript = GameObject.Find("Target").GetComponent<TargetScript>();

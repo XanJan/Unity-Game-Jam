@@ -33,7 +33,7 @@ public class DrinkWater : MonoBehaviour
 
         if(thirst <= 0f)
         {
-            Lose();
+            FindObjectOfType<GameManager>().EndGame();
         }
 
         if(Input.GetKeyDown(KeyCode.E) && canDrink != null && thirst < maxHydration)
@@ -64,10 +64,5 @@ public class DrinkWater : MonoBehaviour
         {
             thirst -= activeDehydration;
         }
-    }
-
-    public void Lose()
-    {
-        Destroy(gameObject);
     }
 }

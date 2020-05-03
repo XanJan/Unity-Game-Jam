@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -31,10 +32,15 @@ public class WaveSpawner : MonoBehaviour
 
     public Rigidbody2D rb;
     public Transform startPosition;
+    public TextMeshProUGUI scoreVisual;
+    private float score = 0;
     void Start()
     {
         waterScript = GameObject.Find("Target").GetComponent<TargetScript>();
         waveCountdown = timeBetweenWaves;
+
+        scoreVisual.text = "Score: " + score.ToString();
+
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points referenceds");
@@ -71,6 +77,9 @@ public class WaveSpawner : MonoBehaviour
     {
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
+
+        score += Mathf.Round(waterScript.AmountOfWater);
+        scoreVisual.text = "Score: " + score.ToString();
 
         waterScript.AmountOfWater += addWaterAmount;
         rb.position = startPosition.position;

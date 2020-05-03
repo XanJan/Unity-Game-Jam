@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TargetScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TargetScript : MonoBehaviour
     public GameObject waterSpriteActive;
     public float maxVisual;
 
+    public TextMeshProUGUI waterAmountViusual;
     private void Start()
     {
         AmountOfWater = maxVisual/2;
@@ -19,6 +21,7 @@ public class TargetScript : MonoBehaviour
 
     void Update()
     {
+        waterAmountViusual.text = "OASIS: " + Mathf.Round(AmountOfWater).ToString();
         if (AmountOfWater > 0 && AmountOfWater <= maxVisual * 0.2)
         {
             waterSprite[0].SetActive(true);

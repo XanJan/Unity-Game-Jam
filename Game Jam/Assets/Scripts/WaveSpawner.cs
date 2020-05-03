@@ -45,6 +45,8 @@ public class WaveSpawner : MonoBehaviour
     private float AddingRate;
     private int Round;
     private int test;
+    public TextMeshProUGUI wavenumber;
+    public int wave;
 
 
     void Start()
@@ -100,7 +102,7 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
-        
+        wave++;
         AddingCount++;
         AddingRate += 0.25f;
         Round++;
@@ -125,6 +127,8 @@ public class WaveSpawner : MonoBehaviour
 
         score += Mathf.Round(waterScript.AmountOfWater);
         scoreVisual.text = "Score: " + score.ToString();
+
+        wavenumber.text = "Wave: " + wave.ToString();
 
         waterScript.AmountOfWater += addWaterAmount;
         rb.position = startPosition.position;

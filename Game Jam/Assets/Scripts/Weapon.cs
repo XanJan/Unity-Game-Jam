@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
         else
             readyToShoot = false;
 
-        if (Input.GetButton("Fire1") && readyToShoot && currentAmmo > 0)
+        if (Input.GetButton("Fire1") && readyToShoot && currentAmmo > 0 && isReloading == false)
         {
             Shoot();
         }
@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
         }
         if (isReloading)
             return;
-        if (currentAmmo <= 0)
+        if (currentAmmo <= 0 && isReloading == false || Input.GetKeyDown(KeyCode.R) && isReloading == false)
         {
             isReloading = true;
             StartCoroutine(Reload());

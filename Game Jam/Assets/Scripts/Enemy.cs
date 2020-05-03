@@ -56,7 +56,6 @@ public class Enemy : MonoBehaviour
         }
         if (EnemyTimer <= 0)
         {
-            Debug.Log("test");
             PickUpWater();
             waterPickup = false;
 

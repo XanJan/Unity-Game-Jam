@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
        float enemyDistance = Vector3.Distance(this.transform.position, target.transform.position);
         if(enemyDistance <= 1 && !waterPickup)
         {
+            //Instantiate();
             Destroy(gameObject);
         }
 
@@ -70,10 +71,6 @@ public class Enemy : MonoBehaviour
         {
             colWithWater = true;
             
-            
-           
-
-
         }
     }
     void PickUpWater()

@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
     public TextMeshProUGUI wavenumber;
     public int wave;
 
-
+    public AudioSource thunder;
     void Start()
     {
         AddingCount = 2;
@@ -120,6 +120,7 @@ public class WaveSpawner : MonoBehaviour
         //waves.RemoveAt(RemoveClass);
 
         var gO = Instantiate(animator);
+        thunder.Play();
         Destroy(gO, 5f);
 
         state = SpawnState.COUNTING;

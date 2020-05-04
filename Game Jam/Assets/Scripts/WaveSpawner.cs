@@ -67,6 +67,7 @@ public class WaveSpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
 
         scoreVisual.text = "Score: " + score.ToString();
+        wavenumber.text = "Wave: " + wave.ToString();
 
         if (spawnPoints.Length == 0)
         {

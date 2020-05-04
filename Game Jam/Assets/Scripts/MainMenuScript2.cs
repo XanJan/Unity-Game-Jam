@@ -9,7 +9,11 @@ public class MainMenuScript2 : MonoBehaviour
     public GameObject controls;
     public GameObject options;
     public AudioMixer audioMixer;
-    
+
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
     public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

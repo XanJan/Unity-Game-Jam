@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         GameIsPaused = true;
         cursor.SetActive(false);
+        Cursor.visible = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
     }
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         GameIsPaused = false;
+        Cursor.visible = false;
         cursor.SetActive(true);
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
     public void MainMenu()
     {
         GameIsPaused = false;
+        Cursor.visible = true;
+        cursor.SetActive(false);
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);

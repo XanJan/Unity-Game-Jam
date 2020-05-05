@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5096765019841605284}
-  - component: {fileID: 5096765019841605285}
+  - component: {fileID: 7022703622011967721}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &5096765019841605285
+--- !u!95 &7022703622011967721
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 5096765019841605282}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9d76eb6350951d84c953ce260509cd80, type: 2}
+  m_Controller: {fileID: 9100000, guid: e27b4e317e5cf8f4984d7b539175c076, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

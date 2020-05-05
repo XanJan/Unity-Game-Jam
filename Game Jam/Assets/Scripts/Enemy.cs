@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private GameObject spawnPosition;
 
     [SerializeField]
-    float speed;
+    float currentspeed;
 
     Vector3 dirNormalized;
     private TargetScript targetScript;
@@ -26,13 +26,14 @@ public class Enemy : MonoBehaviour
     public float amountPickedUp;
 
     private GameObject player;
+    public float speedEnemy = 3f;
 
 
 
 
     void Start()
     {
-        speed = 3f;
+        currentspeed = speedEnemy;
        
         target = GameObject.FindGameObjectWithTag("Water");
         spawnPosition = GameObject.Find("Spawn Point");
@@ -50,7 +51,7 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(relative.y, relative.x ) * Mathf.Rad2Deg - 90;
         transform.Rotate(0, 0, angle);
         dirNormalized = (target.transform.position - transform.position).normalized;
-        transform.position = transform.position + dirNormalized * speed * Time.deltaTime;
+        transform.position = transform.position + dirNormalized * currentspeed * Time.deltaTime;
 
        float enemyDistance = Vector3.Distance(this.transform.position, target.transform.position);
         if(enemyDistance <= 1 && !waterPickup)
@@ -67,8 +68,10 @@ public class Enemy : MonoBehaviour
         {
             CancelInvoke("PickUpWater");
             target = player;
-            speed = 3f;
+            currentspeed = speedEnemy;
         }
+        if (waterPickup == false)
+            currentspeed = speedEnemy;
 
             
     }
@@ -78,7 +81,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Water"))
         {
             colWithWater = true;
-            speed = 0f;
+            currentspeed = 0f;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -86,7 +89,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Water"))
         {
             colWithWater = false;
-            speed = 3f;
+            currentspeed = speedEnemy;
         }
     }
     void PickUpWater()
@@ -107,7 +110,7 @@ public class Enemy : MonoBehaviour
                 }
 
             target = FindClosestSpawn();
-            speed = 3f;
+            currentspeed = speedEnemy;
             GetComponent<SpriteRenderer>().sprite = waterSprite;
         }
     }

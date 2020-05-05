@@ -36,8 +36,6 @@ public class WaveSpawner : MonoBehaviour
     public float score = 0;
     public Transform barrelGuy1;
 
-    public Animator animator;
-
     public Wave wave1;
     public Wave wave2;
 
@@ -46,11 +44,16 @@ public class WaveSpawner : MonoBehaviour
     private int Round;
     private int test;
     public TextMeshProUGUI wavenumber;
-    public int wave;
 
     public AudioSource thunder;
+
+    private Animator cloudsAnimator;
+    public int newPerWave;
+
     void Start()
     {
+        cloudsAnimator = GameObject.Find("Clouds").GetComponent<Animator>();
+
         AddingCount = 2;
         AddingRate = 2f;
         Round = 1;
@@ -67,7 +70,7 @@ public class WaveSpawner : MonoBehaviour
         waveCountdown = timeBetweenWaves;
 
         scoreVisual.text = "Score: " + score.ToString();
-        wavenumber.text = "Wave: " + wave.ToString();
+        wavenumber.text = "Wave: " + Round.ToString();
 
         if (spawnPoints.Length == 0)
         {
@@ -103,8 +106,7 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
-        wave++;
-        AddingCount++;
+        AddingCount+=newPerWave;
         AddingRate += 0.25f;
         Round++;
 
@@ -119,10 +121,11 @@ public class WaveSpawner : MonoBehaviour
         //int RemoveClass = waves.Count;
 
         //waves.RemoveAt(RemoveClass);
-
-        var gO = Instantiate(animator);
+        
+        cloudsAnimator.SetBool("Clouds", true);
+        //var gO = Instantiate(animator);
         thunder.Play();
-        Destroy(gO, 5f);
+        //Destroy(gO, 5f);
 
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
@@ -130,10 +133,10 @@ public class WaveSpawner : MonoBehaviour
         score += Mathf.Round(waterScript.AmountOfWater);
         scoreVisual.text = "Score: " + score.ToString();
 
-        wavenumber.text = "Wave: " + wave.ToString();
+        wavenumber.text = "Wave: " + Round.ToString();
 
-        waterScript.AmountOfWater += addWaterAmount;
-        rb.position = startPosition.position;
+
+        Invoke("ReplacePlayer", 1.8f);
 
         //if(nextWave + 1 > waves.Length - 1)
         //{
@@ -162,6 +165,7 @@ public class WaveSpawner : MonoBehaviour
     }
     IEnumerator SpawnWave(Wave _wave)
     {
+        cloudsAnimator.SetBool("Clouds", false);
         //Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
 
@@ -184,5 +188,11 @@ public class WaveSpawner : MonoBehaviour
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length) ];
         Instantiate(_barrelGuy, _sp.position, _sp.rotation);
         
+    }
+
+    void ReplacePlayer()
+    {
+        rb.position = startPosition.position;
+        waterScript.AmountOfWater += addWaterAmount;
     }
 }

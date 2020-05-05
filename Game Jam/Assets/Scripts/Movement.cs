@@ -42,8 +42,9 @@ public class Movement : MonoBehaviour
     {
         if (collision.CompareTag("Barrel"))
         {
+            float barellAmount = collision.GetComponent<Barrel>().barrellAmount;
             Destroy(collision.gameObject);
-            targetScript.AmountOfWater += enemyScript.enemyPickWaterAmount;
+            targetScript.AmountOfWater += barellAmount;
         }
     }
 }

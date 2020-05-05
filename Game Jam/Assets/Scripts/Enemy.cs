@@ -23,6 +23,10 @@ public class Enemy : MonoBehaviour
 
     public float enemyPickWaterAmount;
 
+    public float amountPickedUp;
+
+    private GameObject player;
+
 
 
 
@@ -33,6 +37,7 @@ public class Enemy : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Water");
         spawnPosition = GameObject.Find("Spawn Point");
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
+        player = GameObject.Find("Player");
         
 
     }
@@ -57,17 +62,15 @@ public class Enemy : MonoBehaviour
         if(colWithWater == true)
         {
             Invoke("PickUpWater", EnemyTimer);
-            //EnemyTimer -= 0.004f;
         }
-        /*
-        if (EnemyTimer <= 0)
+        if (targetScript.AmountOfWater <= 0f && waterPickup == true)
         {
-            PickUpWater();
-            target = FindClosestSpawn();
+            CancelInvoke("PickUpWater");
+            target = player;
             speed = 3f;
-            GetComponent<SpriteRenderer>().sprite = waterSprite;
         }
-        */
+
+            
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,13 +81,31 @@ public class Enemy : MonoBehaviour
             speed = 0f;
         }
     }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            colWithWater = false;
+            speed = 3f;
+        }
+    }
     void PickUpWater()
     {
         if (waterPickup == true)
         {
             waterPickup = false;
-            if(targetScript.AmountOfWater - enemyPickWaterAmount>0f)
-                targetScript.AmountOfWater -= enemyPickWaterAmount;
+            if (targetScript.AmountOfWater > 0f)
+                if (targetScript.AmountOfWater - enemyPickWaterAmount >= 0f)
+                {
+                    targetScript.AmountOfWater -= enemyPickWaterAmount;
+                    amountPickedUp = enemyPickWaterAmount;
+                }
+                else if (targetScript.AmountOfWater - enemyPickWaterAmount < 0f)
+                {
+                    amountPickedUp = targetScript.AmountOfWater;
+                    targetScript.AmountOfWater -= targetScript.AmountOfWater;
+                }
+
             target = FindClosestSpawn();
             speed = 3f;
             GetComponent<SpriteRenderer>().sprite = waterSprite;

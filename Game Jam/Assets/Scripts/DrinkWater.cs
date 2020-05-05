@@ -39,17 +39,44 @@ public class DrinkWater : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && canDrink != null && thirst < maxHydration)
         {
             var currentThirst = thirst;
-            if (maxHydration - currentThirst < drinkAmount && waterScript.AmountOfWater > 0f)
-            {
-                var subtract = maxHydration - currentThirst;
-                currentThirst += subtract;
-                waterScript.AmountOfWater -= subtract;
-            }
-            else if(waterScript.AmountOfWater >= drinkAmount && waterScript.AmountOfWater > 0f)
-            {
-                currentThirst += drinkAmount;
-                waterScript.AmountOfWater -= drinkAmount;
-            }
+            if(waterScript.AmountOfWater > 0f)
+                
+                if (maxHydration - currentThirst < drinkAmount)
+                {
+                    if (waterScript.AmountOfWater < drinkAmount)
+                    {
+                        if(waterScript.AmountOfWater > maxHydration - currentThirst)
+                        {
+                            waterScript.AmountOfWater -= maxHydration - currentThirst;
+                            currentThirst += maxHydration - currentThirst;
+                        }
+                        else if(waterScript.AmountOfWater < maxHydration - currentThirst)
+                        {
+                            currentThirst += waterScript.AmountOfWater;
+                            waterScript.AmountOfWater -= waterScript.AmountOfWater;
+                        }
+                    }
+                    else
+                    {
+                        var subtract = maxHydration - currentThirst;
+                        currentThirst += subtract;
+                        waterScript.AmountOfWater -= subtract;
+                    }
+                }
+                else
+                {
+                    if (waterScript.AmountOfWater < drinkAmount)
+                    {
+                        currentThirst += waterScript.AmountOfWater;
+                        waterScript.AmountOfWater -= waterScript.AmountOfWater;
+                    }
+                    else
+                    {
+                        currentThirst += drinkAmount;
+                        waterScript.AmountOfWater -= drinkAmount;
+                    }
+
+                }
             
             thirst = currentThirst;
         }

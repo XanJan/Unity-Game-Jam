@@ -28,7 +28,10 @@ public class EnemyDamage : MonoBehaviour
         {
             if (!enemyScript.waterPickup)
             {
-                Instantiate(barrel, transform.position, transform.rotation);
+                
+                GameObject gO =Instantiate(barrel, transform.position, transform.rotation);
+                Barrel barellScript = gO.GetComponent<Barrel>();
+                barellScript.barrellAmount = enemyScript.amountPickedUp;
                 Die();
             }
             Die();

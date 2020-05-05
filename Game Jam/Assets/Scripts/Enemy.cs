@@ -21,7 +21,9 @@ public class Enemy : MonoBehaviour
     public float EnemyTimer;
     private bool colWithWater = false;
 
-    
+    public float enemyPickWaterAmount;
+
+
 
 
     void Start()
@@ -54,16 +56,18 @@ public class Enemy : MonoBehaviour
 
         if(colWithWater == true)
         {
-            EnemyTimer -= 0.004f;
+            Invoke("PickUpWater", EnemyTimer);
+            //EnemyTimer -= 0.004f;
         }
+        /*
         if (EnemyTimer <= 0)
         {
             PickUpWater();
-            waterPickup = false;
-
             target = FindClosestSpawn();
+            speed = 3f;
             GetComponent<SpriteRenderer>().sprite = waterSprite;
         }
+        */
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -71,14 +75,19 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Water"))
         {
             colWithWater = true;
-            
+            speed = 0f;
         }
     }
     void PickUpWater()
     {
         if (waterPickup == true)
         {
-            targetScript.AmountOfWater -= 10;
+            waterPickup = false;
+            if(targetScript.AmountOfWater - enemyPickWaterAmount>0f)
+                targetScript.AmountOfWater -= enemyPickWaterAmount;
+            target = FindClosestSpawn();
+            speed = 3f;
+            GetComponent<SpriteRenderer>().sprite = waterSprite;
         }
     }
 

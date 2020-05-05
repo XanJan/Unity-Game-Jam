@@ -38,17 +38,20 @@ public class DrinkWater : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.E) && canDrink != null && thirst < maxHydration)
         {
-            if (maxHydration - thirst < drinkAmount)
+            var currentThirst = thirst;
+            if (maxHydration - currentThirst < drinkAmount && waterScript.AmountOfWater > 0f)
             {
-                var subtract = maxHydration - thirst;
-                thirst += subtract;
+                var subtract = maxHydration - currentThirst;
+                currentThirst += subtract;
                 waterScript.AmountOfWater -= subtract;
             }
-            else
+            else if(waterScript.AmountOfWater >= drinkAmount && waterScript.AmountOfWater > 0f)
             {
-                thirst += drinkAmount;
+                currentThirst += drinkAmount;
                 waterScript.AmountOfWater -= drinkAmount;
             }
+            
+            thirst = currentThirst;
         }
         hydrationBar.fillAmount = thirst / maxHydration;
     }

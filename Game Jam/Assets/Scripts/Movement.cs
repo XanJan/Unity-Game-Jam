@@ -12,9 +12,11 @@ public class Movement : MonoBehaviour
     public Vector2 movement;
     Vector2 mousePos;
     private TargetScript targetScript;
+    public Enemy enemyScript;
     void Start()
     {
         targetScript = GameObject.Find("Target").GetComponent<TargetScript>();
+        
     }
 
     void Update()
@@ -41,7 +43,7 @@ public class Movement : MonoBehaviour
         if (collision.CompareTag("Barrel"))
         {
             Destroy(collision.gameObject);
-            targetScript.AmountOfWater += 10;
+            targetScript.AmountOfWater += enemyScript.enemyPickWaterAmount;
         }
     }
 }
